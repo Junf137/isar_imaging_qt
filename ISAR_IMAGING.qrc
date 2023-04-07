@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/language">
+        <file>resources/language/zh_CN.ts</file>
+        <file>resources/language/zh_CN.qm</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file>resources/img/ICON.rc</file>
+        <file>resources/img/LOGO.ico</file>
+        <file>resources/img/exit.svg</file>
+        <file>resources/img/left-right.svg</file>
+        <file>resources/img/save.svg</file>
+    </qresource>
+</RCC>
