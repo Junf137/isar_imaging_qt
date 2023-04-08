@@ -46,12 +46,6 @@ win32 {
 INCLUDEPATH += $${PWD}/qwt/include
 DEPENDPATH += $${PWD}/qwt/lib
 
-# set up cuda
-LIBS += -L$${PWD}/cuda/lib/ -lCudaTest
-
-INCLUDEPATH += $${PWD}/cuda/include
-DEPENDPATH += $${PWD}/cuda/lib
-
 CONFIG(release, debug|release): {
     BUILD_MODE = release
 }
@@ -63,3 +57,17 @@ else {
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+## * isar_imaging configuration
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../CUDA/isar_imaging/x64/release/ -lisar_imaging
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../CUDA/isar_imaging/x64/debug/ -lisar_imaging
+
+#INCLUDEPATH += $$PWD/../../../CUDA/isar_imaging/isar_imaging
+#DEPENDPATH += $$PWD/../../../CUDA/isar_imaging/isar_imaging
+
+# * cuda_dll configuration
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../CUDA/cuda_test/x64/release/ -lcuda_dll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../CUDA/cuda_test/x64/debug/ -lcuda_dll
+
+INCLUDEPATH += $$PWD/../../../CUDA/cuda_test/cuda_dll
+DEPENDPATH += $$PWD/../../../CUDA/cuda_test/cuda_dll
