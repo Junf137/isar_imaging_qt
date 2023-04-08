@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "header.cuh"
-//#include "isar_imaging_export.h"
+#include "isar_imaging_export.h"
 
 #include <QDebug>
 #include <QtMath>
@@ -210,28 +210,29 @@ void MainWindow::aboutOrganization()
 
 void MainWindow::btnStartClicked()
 {
-   // cuda test
-   const unsigned int arraySize = 6;
-   const int a[arraySize] = { 1, 2, 3, 4, 5, 6 };
-   const int b[arraySize] = { 10, 20, 30, 40, 50, 60 };
-   int c[arraySize] = { 0 };
-   arrAdd(c, a, b, arraySize);
+//   // cuda test
+//   const unsigned int arraySize = 6;
+//   const int a[arraySize] = { 1, 2, 3, 4, 5, 6 };
+//   const int b[arraySize] = { 10, 20, 30, 40, 50, 60 };
+//   int c[arraySize] = { 0 };
+//   arrAdd(c, a, b, arraySize);
 
-//   qDebug() << QString("%1, %2, %3, %4, %5").arg(c[0]).arg(c[1]).arg(c[2]).arg(c[3]).arg(c[4]);
-   printf("{%d, %d, %d, %d, %d}\n", c[0], c[1], c[2], c[3], c[4]);
+////   qDebug() << QString("%1, %2, %3, %4, %5").arg(c[0]).arg(c[1]).arg(c[2]).arg(c[3]).arg(c[4]);
+//   printf("{%d, %d, %d, %d, %d}\n", c[0], c[1], c[2], c[3], c[4]);
+//   fflush(stdout);
+
+   // * Configuring imaging parameters
+   int sampling_stride = 1;
+   int window_head = 10 - 1;
+   int window_len = 256;
+
+   int data_style = 2;
+   int option_alignment = 0;
+   int option_phase = 1;
+   bool if_hpc = true;
+   bool if_mtrc = true;
+
+   // * Imaging process
+   isar_imaging("F:\\Users\\Project\\isar_imaging\\210425235341_047414_1383_00\\", sampling_stride, window_head, window_len, data_style, option_alignment, option_phase, if_hpc, if_mtrc);
    fflush(stdout);
-
-//   // * Configuring imaging parameters
-//   int sampling_stride = 1;
-//   int window_head = 10 - 1;
-//   int window_len = 256;
-
-//   int data_style = 2;
-//   int option_alignment = 0;
-//   int option_phase = 1;
-//   bool if_hpc = true;
-//   bool if_mtrc = true;
-
-//   // * Imaging process
-//   isar_imaging("F:\\Users\\Project\\isar_imaging\\210425235341_047414_1383_00\\", sampling_stride, window_head, window_len, data_style, option_alignment, option_phase, if_hpc, if_mtrc);
 }
